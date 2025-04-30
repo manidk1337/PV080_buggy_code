@@ -1,7 +1,5 @@
-import sys 
-import os
-import yaml
 import flask
+import yaml
 
 app = flask.Flask(__name__)
 
@@ -14,7 +12,7 @@ def index():
 
         
 CONFIG = {"API_KEY": "771df488714111d39138eb60df756e6b"}
-class Person(object):
+class Person():
     def __init__(self, name):
         self.name = name
 
@@ -37,7 +35,7 @@ def fetch_website(urllib_version, url):
 
 def load_yaml(filename):
     stream = open(filename)
-    deserialized_data = yaml.load(stream, Loader=yaml.Loader) #deserializing data
+    deserialized_data = yaml.safe_load(stream, Loader=yaml.Loader) #deserializing data
     return deserialized_data
     
 def authenticate(password):
